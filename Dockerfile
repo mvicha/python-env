@@ -15,9 +15,9 @@ USER builduser
 WORKDIR /home/builduser
 
 COPY .vimrc .vimrc
-COPY .bashrc .bashrc
+COPY .bashrc.python-env .bashrc
 
-RUN pip3 install --global awscli aws-sam-cli bandit boto3 coverage flake8 flake8_polyfill mock moto pytest radon setuptools-rust
+RUN pip3 install --user awscli aws-sam-cli bandit boto3 coverage flake8 flake8_polyfill mock moto pytest radon setuptools-rust
 
 
 RUN mkdir ~/.aws ~/.docker
