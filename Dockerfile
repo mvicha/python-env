@@ -20,4 +20,5 @@ COPY .bashrc.python-env .bashrc
 
 RUN pip3 install --user awscli aws-sam-cli==1.12 bandit boto3 coverage flake8 flake8_polyfill mock moto pytest radon setuptools-rust
 
-RUN mkdir ~/.aws ~/.docker
+RUN mkdir /var/lib/jenkins/.aws /var/lib/jenkins/.docker \
+    && ln -sf /var/lib/jenkins/.aws /home/builduser/.aws
