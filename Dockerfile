@@ -12,6 +12,9 @@ RUN groupadd -g 991 docker \
     && curl -fsSL https://get.docker.com | bash \
     && usermod -aG docker builduser
 
+RUN mkdir -p /var/lib/jenkins/.aws /var/lib/jenkins/.docker \
+    && chown -R 1001 /var/lib/jenkins
+
 USER builduser
 WORKDIR /home/builduser
 
@@ -20,5 +23,4 @@ COPY .bashrc.python-env .bashrc
 
 RUN pip3 install --user awscli aws-sam-cli==1.12 bandit boto3 coverage flake8 flake8_polyfill mock moto pytest radon setuptools-rust
 
-RUN mkdir /var/lib/jenkins/.aws /var/lib/jenkins/.docker \
-    && ln -sf /var/lib/jenkins/.aws /home/builduser/.aws
+RUN ln -sf /var/lib/jenkins/.aws /home/builduser/.aws
