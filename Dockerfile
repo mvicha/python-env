@@ -6,7 +6,7 @@ RUN apt-get update \
 RUN python -m pip install --upgrade pip
 
 RUN groupadd -g 993 buildgroup \
-    && useradd -d /home/builduser -s /bin/bash -m -c 'Build user' -u 995 -g buildgroup builduser
+    && useradd -d /home/builduser -s /bin/bash -m -c 'Build user' -u 1001 -g buildgroup builduser
 
 RUN groupadd -g 991 docker \
     && curl -fsSL https://get.docker.com | bash \
